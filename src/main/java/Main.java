@@ -1,32 +1,27 @@
-import service.UserServiceImpl;
-import java.util.List;
 import model.User;
+import service.UserService;
+import service.UserServiceImpl;
+
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-
-        UserServiceImpl userService = new UserServiceImpl();
-
+        UserService userService = new UserServiceImpl();
+        //Создание таблицы Юзеров
         userService.createUsersTable();
-        userService.cleanUsersTable();
-        userService.saveUser("A", "B", (byte) 36);
+        //Добавление четырех Юзеров в таблицу
         userService.saveUser("AB", "BC", (byte) 52);
         userService.saveUser("ABCD", "BCDE", (byte) 0);
-        userService.saveUser("ABCDE", "BCDES", (byte) 4);
-        userService.saveUser("ABCDS", "BCDFFDD", (byte) 100);
         userService.saveUser("Ivan", "Ivanov", (byte) 100);
+        //Получение всех Юзеров из базы и ввывод в консоль
         List<User> userList = userService.getAllUsers();
-
         for (User u :
                 userList) {
             System.out.println(u);
         }
-        //userService.dropUsersTable();
+        //Очистка таблицы Юзеров
+        userService.cleanUsersTable();
+        //Удаление таблицы
+        userService.dropUsersTable();
     }
 }
-
-//TODO
-
-//Привет, в дао мы пишем запросы в бд
-//В сервисе пока просто переадресация из мейна в дао
-//В мейне по условию

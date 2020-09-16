@@ -35,7 +35,7 @@ public class UserDaoJDBCImpl implements dao.UserDao {
     }
 
     public void dropUsersTable() {
-        String sqlCommand = "DROP TABLE IF EXISTS `tasks_db`.`users` ";
+        String sqlCommand = "DROP TABLE IF EXISTS `tasks_db`.`users`";
         try {
             Statement statement = connection.createStatement();
             statement.executeUpdate(sqlCommand);
