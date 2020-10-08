@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Loop</title>
+    <style>table th, table td {padding: 5px;}</style>
+</head>
+
+<body>
+<h1>Cars: technical data</h1>
+
+<table border="0">
+    <tr>
+        <th>index</th>
+        <th>model</th>
+        <th>series</th>
+        <th>number</th>
+    </tr>
+
+    <tr th:each="car, state : ${carsList}">
+        <td th:utext="${state.index}">index</td>
+        <td th:utext="${state.current.getModel()}">model</td>
+        <td th:utext="${state.current.getSeries()}">series</td>
+        <td th:utext="${state.current.getNumber()}">number</td>
+    </tr>
+
+    <p th:utext="${count}"></p>
+
+</table>
+</body>
+</html>
