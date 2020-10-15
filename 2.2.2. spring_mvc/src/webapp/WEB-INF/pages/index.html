@@ -1,15 +1,36 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <title></title>
+    <meta charset="UTF-8" />
+    <title>USER MANAGER</title>
+    <style>table th, table td {padding: 5px;}</style>
 </head>
+
 <body>
-<div>
-    <th:block th:each="msg : ${messages}">
-        <h1 th:text="${msg}"></h1>
-    </th:block>
+<div align="center">
+    <h2>User Manager</h2>
+    <h3><a href="/new">New USER</a></h3>
+
+<table border="1" cellpadding="5">
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>surname</th>
+        <th>address</th>
+        <th>Action</th>
+    </tr>
+
+    <tr th:each="user : ${userList}">
+        <td th:utext="${user.getId()}">ID</td>
+        <td th:utext="${user.getName()}">Name</td>
+        <td th:utext="${user.getSurname()}">Surname</td>
+        <td th:utext="${user.getAddress()}">Address</td>
+        <td><a th:href="@{'/edit/' + ${user.getId()}}">Edit</a>
+            <a th:href="@{'/delete/' + ${user.getId()}}">Delete</a></td>
+    </tr>
+
+</table>
 </div>
 </body>
 </html>
