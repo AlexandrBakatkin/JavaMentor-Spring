@@ -1,5 +1,6 @@
 package web.service;
 
+import org.springframework.security.core.userdetails.UserDetails;
 import web.model.User;
 
 import java.util.List;
@@ -17,4 +18,6 @@ public interface UserService {
     void deleteById(Long id);
 
     User getById(Long id);
+
+    User getByName(String s);
 }

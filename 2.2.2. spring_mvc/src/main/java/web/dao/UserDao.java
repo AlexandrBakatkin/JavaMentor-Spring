@@ -17,4 +17,6 @@ public interface UserDao {
     void mergeUser(Long id, String name, String surname, String address);
 
     User getById(Long id);
+
+    User getUserByName(String name);
 }

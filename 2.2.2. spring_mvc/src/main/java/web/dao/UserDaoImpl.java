@@ -18,7 +18,6 @@ public class UserDaoImpl implements UserDao{
     @Transactional
     public void add(User user) {
         entityManager.persist(user);
-        System.out.println("Contains(After persist):"+ entityManager.contains(user));
     }
 
     @Override
@@ -29,21 +28,21 @@ public class UserDaoImpl implements UserDao{
     @Override
     @Transactional
     public void delete(User user) {
-        entityManager.remove(getId(user.getId()));
+        entityManager.remove(getById(user.getId()));
         System.out.println("Contains(After detach):"+ entityManager.contains(user));
     }
 
     @Override
     @Transactional
     public void deleteById(Long id) {
-        entityManager.remove(getId(id));
-        System.out.println("Contains(After detach):"+ entityManager.contains(getId(id)));
+        entityManager.remove(getById(id));
+        System.out.println("Contains(After detach):"+ entityManager.contains(getById(id)));
     }
 
     @Override
     @Transactional
     public void mergeUser(Long id, String name, String surname, String address) {
-        User user = getId(id);
+        User user = getById(id);
         entityManager.detach(user);
         user.setName(name);
         user.setSurname(surname);
@@ -56,7 +55,12 @@ public class UserDaoImpl implements UserDao{
         return entityManager.find(User.class, id);
     }
 
-    private User getId(Long id){
-       return entityManager.find(User.class, id);
+    @Override
+    public User getUserByName(String name) {
+        List<User> list = entityManager.createQuery("SELECT u FROM user u WHERE u.name = :name", User.class)
+                .setParameter("name", name).getResultList();
+        if (list.isEmpty()){
+            return null;
+        } else return list.get(0);
     }
 }

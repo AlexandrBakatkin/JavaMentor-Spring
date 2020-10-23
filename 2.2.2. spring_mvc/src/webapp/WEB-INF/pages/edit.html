@@ -8,28 +8,8 @@
 <body>
 <div align="center">
     <h2>EDIT MOTHERFUCKER USER</h2>
+    <h3><a th:href="@{/logout}">Logout</a></h3>
     <form th:action="@{/editUser/{id}(id=${user.id})}" method="post" th:object="${user}">
-        <!--<table border="0" cellpadding="5">
-            <tr>
-                <td>ID: </td>
-                <td th:utext="${user.getId()}"></td>
-            </tr>
-            <tr>
-                <td>Name: </td>
-                <td><input type=text name="name" id="name"/></td>
-            </tr>
-            <tr>
-                <td>Surname: </td>
-                <td><input type=text name="surname" id="surname"/></td>
-            </tr>
-            <tr>
-                <td>Address: </td>
-                <td><input type=text name="address" id="address"/></td>
-            </tr>
-            <tr>
-                <td colspan="2" align="center"><input type="submit" value="Edit"></td>
-            </tr>
-        </table>-->
 
         <label for="name">Name</label>
         <input type="text" th:field="*{name}" id="name" placeholder="Name">

@@ -1,4 +1,4 @@
-<html xmlns:form="http://www.w3.org/1999/xhtml">
+<html xmlns:form="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
@@ -8,7 +8,8 @@
 <body>
     <div align="center">
         <h2>NEW MOTHERFUCKER USER</h2>
-        <form action="save" method="POST" modelattribute="user">
+        <h3><a th:href="@{/logout}">Logout</a></h3>
+        <form action="/admin/save" method="POST" modelattribute="user">
             <table border="0" cellpadding="5">
                 <tr>
                     <td>Name: </td>
@@ -21,6 +22,10 @@
                 <tr>
                     <td>Address: </td>
                     <td><input type=text name="address" id="address"/></td>
+                </tr>
+                <tr>
+                    <td>Password: </td>
+                    <td><input type=text name="password" id="password"/></td>
                 </tr>
                 <tr>
                     <td colspan="2" align="center"><input type="submit" value="Save"></td>
