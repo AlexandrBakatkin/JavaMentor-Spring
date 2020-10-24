@@ -8,10 +8,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import web.config.repo.RoleRepo;
-import web.config.repo.UserRepo;
 import web.model.Role;
 import web.model.User;
+import web.repository.RoleRepo;
+import web.repository.UserRepo;
 
 import java.util.Collection;
 import java.util.HashSet;
