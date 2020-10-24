@@ -5,18 +5,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import web.model.User;
-import web.service.UserService;
+import web.service.UserServiceJpaImpl;
 
 import java.security.Principal;
 
 @Controller
 public class UserController {
 
-	UserService userService;
+	UserServiceJpaImpl userService;
 
 	@Autowired
-	public void setUserService(UserService userService) {
-		this.userService = userService;
+	public void setUserService(UserServiceJpaImpl userServiceJpa) {
+		this.userService = userServiceJpa;
 	}
 
 	@GetMapping(value = "/")
