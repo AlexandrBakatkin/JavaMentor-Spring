@@ -7,26 +7,15 @@ import javax.persistence.*;
 public class Car {
 
     @Id
-    @Column(name = "user_id")
-    private Long user_id;
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "model")
     private String model;
 
     @Column(name = "series")
     private int series;
-
-    @OneToOne(fetch = FetchType.EAGER)
-    @MapsId
-    private User user;
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 
     public Car() {}
 
@@ -52,10 +41,10 @@ public class Car {
     }
 
     public Long getUser_id() {
-        return user_id;
+        return id;
     }
 
     public void setUser_id(long id) {
-        this.user_id = id;
+        this.id = id;
     }
 }
